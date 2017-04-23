@@ -2,9 +2,12 @@
 
 
 FILE_NAMES=(
-  .bashrc
-  .gitconfig
-  .profile
+    .bash_colors
+    .bashrc
+    .functions
+    .gitconfig
+    .gitignore
+    .profile
 )
 SOURCE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 # Source functions
@@ -21,7 +24,7 @@ replace_file() {
         log_info "Backing up '$basename'..."
         mv "$filename" "$newname"
     elif [ -L "$filename" ]; then
-        log_info "Removing symlink '$filename' -> '$(readlink -f \"$filename\")'"
+        log_info "Removing symlink '$filename' -> '$(readlink  \"$filename\")'"
         rm "$filename"
     fi
     ln -s "$origin" "$filename"
